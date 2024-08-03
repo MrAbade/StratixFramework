@@ -1,8 +1,13 @@
-from .entity import Entity, EntityUUID
+from .entity import Entity, IdUUID, IdString, IdInt, IdBytes
 from .value_object import ValueObject
+from .specification import Specification
 
 __all__ = [
     "ValueObject",
     "Entity",
-    "EntityUUID",
+    "Specification",
+    "IdUUID",
+    "IdString",
+    "IdBytes",
+    "IdInt",
 ]

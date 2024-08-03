@@ -5,7 +5,7 @@ from uuid import UUID, uuid4
 
 from .interfaces import BaseEvent, BaseEventBus, PublishAlgorithm
 from .value_object import ValueObject
-from .tools import  to_pascal_case
+from .tools import to_pascal_case
 
 
 class DomainEvent(BaseEvent[ValueObject]):
@@ -24,12 +24,7 @@ class DomainEvent(BaseEvent[ValueObject]):
         context: str = kwargs.get("context")
         context = to_pascal_case(context) if context else ""
         cls.name = f"[{context}] {cls.__name__}"
-        cls.__annotations__ = {
-            "id": UUID,
-            "created_at": datetime,
-            "name": str,
-            "payload": ValueObject
-        }
+        cls.__annotations__ = {"id": UUID, "created_at": datetime, "name": str, "payload": ValueObject}
         try:
             return super().__init_subclass__(**kwargs)
         except TypeError:
